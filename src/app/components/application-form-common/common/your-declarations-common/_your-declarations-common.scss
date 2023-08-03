@@ -1,0 +1,278 @@
+.modal-fs {
+    $tc-font-size: 0.7rem;
+    $tc-font-weight: 700;
+    $mobile-hPadding: 1rem;
+    $desktop-hPadding: 1.5rem;
+    $border-radius: 5px;
+    $mobile-dialog-margin: 0.5rem;
+    $desktop-dialog-margin: 1rem;
+    $max-desktop-width: 1150px;
+    $desktop-tc-width: 65%;
+    $desktop-consent-width: 35%;
+    $tablet-device: "screen and (max-width: #{$tablet-width})";
+    $desktop-device: "screen and (min-width: #{$tablet-width})";
+    font-size: $tc-font-size;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    @for $i from 1 through 6 {
+      h#{$i} {
+        @extend .stag-book;
+      }
+    }
+    p, span, a {
+      @extend .prusans-book;
+    }
+    .modal-content {
+        @media #{$tablet-device} {
+            background: #d7d2ce;
+        }
+        @media #{$desktop-device} {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        border-radius: 0px;
+    }
+    #your-declarations {
+        .common-box-header {
+            background-color: #efebe5;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            overflow: auto;
+            h1 {
+                font-size: 0.8rem;
+                font-weight: $tc-font-weight;
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+            img {
+                float: right;
+            }
+            @media #{$tablet-device} {
+                padding: 0.5rem $mobile-hPadding;
+            }
+            @media #{$desktop-device} {
+                padding: 0.7rem $desktop-hPadding;
+            }
+        }
+        .common-box-content {
+            background-color: #FFFFFF;
+            border-bottom-left-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            overflow: auto;
+            position: relative;
+            .declaration-box {
+                font-size: $tc-font-size;
+                .declaration-herder {
+                    padding: 0px;
+                    margin: 0px;
+                }
+                .declaration-body {
+                    h4 {
+                        font-size: $tc-font-size;
+                        font-weight: $tc-font-weight;
+                        margin-bottom: 0.5rem;
+                        margin-top: 1rem;
+                        padding-top: 0px;
+                    }
+                    h5 {
+                        font-size: $tc-font-size;
+                        font-weight: $tc-font-weight;
+                        margin-bottom: 0px;
+                        padding-bottom: 0px;
+                    }
+                    p {
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                    b {
+                        font-weight: $tc-font-weight;
+                    }
+                }
+                @media #{$tablet-device} {
+                    padding: 0.5rem $mobile-hPadding 0rem;
+                    overflow-y: scroll; //adaption for ie, padding-bottom not work in ie
+                    &:after {
+                        content: "";
+                        display: block;
+                        height: 2rem;
+                        width: 100%;
+                    }
+                }
+                @media #{$desktop-device} {
+                    padding: 1.5rem $desktop-hPadding 0rem;
+                    overflow-y: scroll; //adaption for ie, padding-bottom not work in ie
+                    &:after {
+                        content: "";
+                        display: block;
+                        height: 2.5rem;
+                        width: 100%;
+                    }
+                    float: left;
+                    width: $desktop-tc-width;
+                }
+            }
+            .mask-box {
+                pointer-events: none;
+                position: relative;
+                height: 120px;
+                margin-top: -120px;
+                z-index: 1;
+                background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0));
+                @media #{$tablet-device} {
+                    margin-left: $mobile-hPadding;
+                    margin-right: $mobile-hPadding;
+                }
+                @media #{$desktop-device} {
+                    padding-left: $desktop-hPadding;
+                    padding-right: $desktop-hPadding;
+                    width: $desktop-tc-width;
+                    position: absolute;
+                    bottom: 0;
+                    background-clip: content-box;
+                }
+            }
+            .scroll-msg-box {
+                text-align: center;
+                position: relative;
+                bottom: 1.6rem;
+                height: 0px;
+                z-index: 2;
+                a {
+                    font-size: 0.7rem;
+                    text-decoration: underline;
+                    color: #636363;
+                }
+                a.desktop-scroll-msg {
+                    cursor: default;
+                    @media #{$tablet-device} {
+                        display: none;
+                    }
+                }
+                a.mobile-scroll-msg {
+                    @media #{$desktop-device} {
+                        display: none;
+                        ;
+                    }
+                }
+                @media #{$desktop-device} {
+                    width: $desktop-tc-width;
+                }
+            }
+            .consent-box {
+                .button-accept-desktop {
+                    @extend .button-carnation-round;
+                    @extend .arrow-button;
+                    width: 180px;
+                    height: 32px;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0.7rem;
+                    font-size: 0.7rem;
+                    padding: 0px;
+                    margin-right: 0px;
+                }
+                h3 {
+                    font-size: 0.7rem;
+                    font-weight: $tc-font-weight;
+                    margin-top: 0;
+                    margin-bottom: 1rem;
+                }
+                p.tips {
+                    font-size: 0.55rem;
+                    text-align: left;
+                    margin-bottom: 0px;
+                }
+                @media #{$tablet-device} {
+                    display: none;
+                }
+                @media #{$desktop-device} {
+                    padding: 1.5rem $desktop-hPadding;
+                    float: left;
+                    width: $desktop-consent-width;
+                    overflow-y: auto;
+                    p.tips {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+        @media #{$tablet-device} {
+            margin: $mobile-dialog-margin;
+        }
+        @media #{$desktop-device} {
+            max-width: $max-desktop-width;
+            margin: $desktop-dialog-margin auto;
+        }
+    }
+    #continue-footer {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        background: #636363;
+        .continue-box {
+            position: relative;
+            height: 87px;
+            button.button-continue-mobile {
+                @extend .button-carnation-round;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+                width: 180px;
+                height: 32px;
+                font-size: 0.7rem;
+                padding: 0px;
+            }
+        }
+        @media #{$desktop-device} {
+            display: none;
+        }
+    }
+    #consent-footer {
+        position: absolute;
+        background: #636363;
+        .consent-box-mobile {
+            background: #FFFFFF;
+            border-radius: $border-radius;
+            margin: $mobile-dialog-margin;
+            padding: 0.7rem $mobile-hPadding 1.5rem;
+            p:last-of-type:not(.tips) {
+                margin-bottom: 1.3rem;
+            }
+            p.tips {
+                font-size: 0.55rem;
+                text-align: center;
+            }
+            button.button-accept-mobile {
+                @extend .button-carnation-round;
+                position: relative;
+                width: 180px;
+                height: 32px;
+                font-size: 0.7rem;
+                padding: 0px;
+                margin-bottom: 0.7rem;
+                @media screen and (max-width: $mobile-width) {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+        @media #{$desktop-device} {
+            display: none;
+        }
+    }
+    @media #{$desktop_device} {
+        overflow: hidden;
+    }
+}
+
+.tmcLink {
+    font-size: 16px;
+    color: #000000;
+    text-decoration: underline;
+    font-family: 'FSAlbertPro-Bold';
+    font-weight: bold;
+    cursor: pointer;
+}

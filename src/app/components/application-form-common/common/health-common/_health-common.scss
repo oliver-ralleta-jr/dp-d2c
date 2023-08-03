@@ -1,0 +1,29 @@
+#PM-health,
+#PL-health {
+    div.title-box-pru {
+        span {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+health-common {
+    .common-box-content {
+        .questions-container {
+            ul {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                padding-left: 10px;
+                li {
+                    text-indent: -5px;
+                }
+                li:before {
+                    content: "- ";
+                    display: inline-block;
+                    text-indent: -5px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}

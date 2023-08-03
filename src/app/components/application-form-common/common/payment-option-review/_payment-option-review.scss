@@ -1,0 +1,43 @@
+#PER-payment-option {
+  .payment-options .common-box-header .edit-section-link {
+    display: inline;
+    opacity: 1;
+    font-size: 20px;
+    line-height: 1.5;
+    .edit-pencil {
+      width: 19px;
+    }
+  }
+}
+.common-main-content #payment-option-review {
+   .radio-inline {
+     padding-left: 15px;
+   }
+   .per-payment-desc {
+     padding-left: 20px;
+   }
+   .grey-text {
+     margin-left:20px;
+ 	}
+}
+#payment-option-review {
+  overflow: hidden;
+  font-family: "FSAlbertPro-Regular" !important;
+  .radio-inline {
+    display: flex;
+    width: 100%;
+    padding: 15px 15px 15px 0;
+  }
+  .per-payment-desc {
+    font-size: 15px;
+    margin-top: 10px;
+    a {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #46C3E3 !important;
+    }
+  }
+  .grey-text {
+    color: $color-label-grey;
+	}
+}

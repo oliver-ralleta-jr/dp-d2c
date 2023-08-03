@@ -1,0 +1,99 @@
+.default .margin-l-15 {
+    margin-left: 15px;
+}
+
+.salary-display-inline {
+    display: inline;
+}
+
+.salary-input-style {
+    width: auto;
+}
+
+#txtAnnualIncome {
+    width: 90%;
+    @media #{$desktop-layout} {
+        max-width: std-size(160px);
+    }
+}
+
+#PM-more-about-you,
+#PL-more-about-you {
+    .tip p {
+        margin-left: 0px;
+        margin-top: 1em;
+        padding-left: 0px;
+        padding-top: 0px;
+        border: none;
+        font-size: 0.6rem;
+    }
+    .tip-triangle {
+        display: none;
+    }
+}
+
+input[name*=question-QMAY023] {
+    text-transform: uppercase;
+}
+
+.tax-residency-details {
+  margin-bottom: 20px;
+  h1 {
+      font-size: 20px;
+      font-family: 'FSAlbertPro-Bold';
+      color: #68737A;
+  }
+  .details-text {
+      font-size: 16px;
+      font-family: 'FSAlbertPro-Regular';
+      color: #68737A;
+      &.more-info {
+          margin-top: 20px;
+      }
+  }
+  .oecd-website-link {
+    a {
+      font-size: 16px;
+      font-family: 'FSAlbertPro-Bold';
+      color: #46C3E3;
+    }
+  }
+}
+.info-tooltip {
+    display: inline-block;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    top: 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH3SURBVHgBvZTRbdtADIbJc93k0SO4E8Qb1NkgAtLYkh/aTJB0giYT1J6g6IvVOAXUDaIN6mygEfxopNX9Je8syVLUOAaCEBAkHKmfd+THI3ph410Bi8VikOc0ALBiNqsw/JDuLZgkSW/98PdCRC4loNdwZ0QmJXSuwzDIdgrG8e0QjESFmDi1lN8zzNJ70Sfmj/LRV2FYfI6i0a//Cs7nNydsOAHRiizOm8FV0sUn+fOLEwYfb5eBq6BEsv+58xvJJSjMaj6x7SPGcdwHd34b+T446L4LgmCl66baa+4yGjZX22LeJ4mKZBtzMWzO5TS99frhslivBMkOtS6j0el3ahjIzmDtrLkejU6lJJwy80VNUBvh64FHYu7H8XgaReNpm08ac6+7VLxKQRjeoMFZ20/xj9s7fdp8zOQIUFb1/cYtWtt7GnHBZYcZg6opttN1WcB2QHubT2atqQQnZ8FS2WPqHNG+5kHPChbLLjMgXcRQ4X6mlAdcminVSou1UnB9+HaquzSGvxUgl4busXtqYjoIbloyIL8uN1YPEnwY2s1MAW9jUs2dQhLrvAs2wfaIPurt/ObnCcN+pc0F4Nn0OMmcHwGKB4au5uCgeZ1xe21iETNXUvD3G+Hq9E4Is0MpUTG/OwXr4nKdCfjKqrW0nEzOlvSa9g8aMeL40yczsQAAAABJRU5ErkJggg==');
+    + div.tooltip {
+      .tooltip-arrow {
+        border-color: #f1f1f1;
+      }
+      .tooltip-inner {
+        min-width: 320px;   
+        @media only screen and (max-width:$mobile-width) {
+          min-width: 240px;
+        }
+        background:#f1f1f1;
+        box-shadow: 0px 2px 4px #f1f1f1;
+        color: $primary-font-color;
+        padding: 5px;
+      }
+    } 
+  }
+
+  .residential-address-modal {
+    .submit-action {
+      margin: 34px 20px;
+      .f-submit-btn, .f-close-btn {
+        @extend .primary-btn;
+        text-transform: uppercase;
+      }
+      .f-close-btn {
+        margin-right: 30px;
+      }
+    }
+  }

@@ -1,0 +1,277 @@
+.whatyoubuy-box {
+    .common-main-content.whatyoubuy-sub-box {
+        .tool-tip {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+        }
+        .tool-tip p {
+            @extend .prusans-book;
+            @extend .font-size-28;
+        }
+        .pdf-box {
+            margin-top: 35px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .pdf-box .pdf-item {
+            display: table;
+            overflow: hidden;
+            margin-bottom: 35px;
+        }
+        .pdf-box .pdf-item:last-child {
+            margin-bottom: 0;
+        }
+        .pdf-box .pdf-item .item-img,
+        .pdf-box .pdf-item .item-title {
+            display: table-cell;
+            vertical-align: top;
+        }
+        .pdf-box .pdf-item .item-title {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .pdf-box .pdf-item .item-title p {
+            @extend .prusans-medium;
+            @extend .font-size-34;
+            @extend .common-color-black;
+            text-align: left;
+            margin-bottom: 0px;
+        }
+        .pdf-box .pdf-item .item-link a {
+            @extend .prusans-medium;
+            @extend .font-size-30;
+            @extend .common-color-blue;
+            text-align: left;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .pdf-box .pdf-item .item-link a.ios-iframe {
+            float: left;
+            margin-right: 14px;
+            margin-top: 6px;
+        }
+        .pdf-box .pdf-item .item-img {
+            display: flex;
+            display: -webkit-flex;
+        }
+        .pdf-box .pdf-item .icon-pdf {
+            width: 40px;
+            height: 34px;
+            padding-right: 10px;
+            background-image: url(assets/images/svg/pdf_icon.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .pdf-box .pdf-item .item-link span {
+            vertical-align: text-bottom;
+            margin: 0 25px;
+            color: $color-label-grey;
+            @extend .input-form-label;
+        }
+        .pdf-box .pdf-item .item-help .help-content-box {
+            @extend .prusans-medium;
+            @extend .common-color-darkgray;
+            @extend .font-size-30;
+        }
+        .pdf-box .pdf-item .item-help .help-content-box .pwd-info-box {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .pdf-box .pdf-item .item-help .help-content-box .pwd-info-box td {
+            border: 1px solid #ccc;
+            text-align: center;	
+            padding: 5px;	
+        }
+        .pdf-box .pdf-item .item-help .help-content-box .pwd-info-box td span {
+            @extend .prusans-medium;
+            @extend .font-size-30;
+        }
+        .tip-triangle {
+            position: absolute;
+            left: 140.1px;
+            top: -7.5px;
+            width: 15px;
+            height: 15px;
+            background-color: #F5F5F5;
+            transform: rotate(45deg);
+        }
+        .download-instructions-box {
+            position: relative;
+            border-radius: 8px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #F5F5F5;
+            margin-top: 25px;
+            &.with-margin {
+                margin-top: -115px;
+            }
+        }
+        .common-sub-box {
+            .document-hint {
+                display: flex;
+                margin-top: 30px;
+                margin-bottom: 20px;
+                padding-top: 0px;
+                padding-bottom: 20px;
+                border-top: 0px solid #CCCCCC;
+                border-bottom: 1px solid #CCCCCC;
+                .text-highlight {
+                    color: #40B5CD;
+                }
+                .hint-details{
+                    font-size: 16px;
+                    .hint-title {
+                        font-weight: bold;
+                    }
+                    .hist-text {
+                        font-size: 13px;
+                        .tclink {
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.buy-review-sub-box {
+    margin: 30px;
+    .review-text {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .info-tooltip {
+        display: inline-block;
+        position: relative;
+        width: 18px;
+        height: 18px;
+        top: 4px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAH3SURBVHgBvZTRbdtADIbJc93k0SO4E8Qb1NkgAtLYkh/aTJB0giYT1J6g6IvVOAXUDaIN6mygEfxopNX9Je8syVLUOAaCEBAkHKmfd+THI3ph410Bi8VikOc0ALBiNqsw/JDuLZgkSW/98PdCRC4loNdwZ0QmJXSuwzDIdgrG8e0QjESFmDi1lN8zzNJ70Sfmj/LRV2FYfI6i0a//Cs7nNydsOAHRiizOm8FV0sUn+fOLEwYfb5eBq6BEsv+58xvJJSjMaj6x7SPGcdwHd34b+T446L4LgmCl66baa+4yGjZX22LeJ4mKZBtzMWzO5TS99frhslivBMkOtS6j0el3ahjIzmDtrLkejU6lJJwy80VNUBvh64FHYu7H8XgaReNpm08ac6+7VLxKQRjeoMFZ20/xj9s7fdp8zOQIUFb1/cYtWtt7GnHBZYcZg6opttN1WcB2QHubT2atqQQnZ8FS2WPqHNG+5kHPChbLLjMgXcRQ4X6mlAdcminVSou1UnB9+HaquzSGvxUgl4busXtqYjoIbloyIL8uN1YPEnwY2s1MAW9jUs2dQhLrvAs2wfaIPurt/ObnCcN+pc0F4Nn0OMmcHwGKB4au5uCgeZ1xe21iETNXUvD3G+Hq9E4Is0MpUTG/OwXr4nKdCfjKqrW0nEzOlvSa9g8aMeL40yczsQAAAABJRU5ErkJggg==');
+        + div.tooltip {
+          .tooltip-arrow {
+            border-color: #f1f1f1;
+          }
+          .tooltip-inner {
+            background: #f1f1f1;
+            box-shadow: 0px 2px 4px #f1f1f1;
+            color: $primary-font-color;
+            padding: 5px;
+          }
+        }    
+      }
+    .document-details {
+        .document-list{
+            list-style: none;
+            margin-left: -40px;
+            margin-top: 20px;
+            .with-margin {
+                margin-bottom: -80px;
+            }
+            .document-item-details {
+                display: flex;
+                cursor: pointer;
+                .download-icon {
+                    display: inline-block;
+                    height: 24px;
+                    width: 24px;
+                    margin-right: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB5SURBVHgB7dQxDoAgDIXhypWMO7vxTOKZjDu78UpodLXQ14Ew0H800m+BEllCA/KTP66b+x7nUTzvqHIGtAfYW+D3M5BzK2lKaYvLFCBAjWSGFwEYKQwXARERhkNAFgGGw8APAYere5EP6ir+oWXWsxS3vquvCqt9D7QmNpEwamO1AAAAAElFTkSuQmCC')
+                }
+                .link-icon {
+                    display: inline-block;
+                    height: 24px;
+                    width: 24px;
+                    margin-right: 10px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADuSURBVHgB7ZTNDYJAEIXfTijAEuhAjA1wNV4sQSoRKrAFSuCg8ch619gCViAV7Dqsy08igYRgNJEvmclk5mUffwMw8W1EWfinmwuldhgDokiuFllROlVTqw3nLcZAqTvn0HjVBpjZ6swRcOQ2Aggh7YxrJLaOrK6OWlfhvLkLPCAo46uAMSCutX7NyPRzq8uNrkmp6zTQ2NjHVTDjA1PUt542dHvWoQ+npZdxSAzD53D7DKRcLwMMOf1wifk9uM0e4cNMBn9g0PKZCs8/XkMMQsyLDWw3KFbfzLTHycMgun4VghJe/TnGgCjGxM/wBFfYRIvrrVjfAAAAAElFTkSuQmCC');
+                }
+                .document-name {
+                    margin-left: 10px;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .document-hint {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-top: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
+        .text-highlight {
+            color: #40B5CD;
+        }
+        .hint-icon {
+            display: inline-block;
+            height: 24px;
+            width: 24px;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAUCAYAAAC9BQwsAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGOSURBVHgBlVRLTgJBEK0uCHGJNxhvABL2zdJfIicATgCeAOYEcAPlBEoM6s5ea8jMDeAILA2RbqtresYZM5/4NlR316vfK0ZACvIxaMIJjEHrIR296FaEACYERF9dtHexr0hIb8EYjnpGZhPysSdvX112FvaAKdKCSUIoytiDA56qq45g25glvxmYy5fNhDPK18Cjx4AftPbVTXeWl04+f86o3ClnPuAZkvPUlfdQRLLgN1uN9W3oCVIZLX7ReglVOB59Zw2QorRcRFVJ/K6HzvIQ/gHVb+9j2xJ31qDmZRVRrj+itkhbS1xFIXAAlaiNo18TxnJs+UyaFfWa8UOSg9fI6Dt3cc8O+aR3F5xXj4ejrrsLp5HndM0iuvNsb7HWv1MVYuSsW8rA/dqlJ1uSOYwqEv3EPVPSemOgBLy7DgU6ijBVicrzqP85W4GbcBA91T9nsXkwxmzLiYIyGSNpiedE8OGLAiXDMqsy4oiI9i825K9AI1UJ1iZp10yPrClim0b2lBBsj3SX/mxY/ACwOKypAGa5AwAAAABJRU5ErkJggg==');	
+        }
+        .hint-details{
+            font-size: 16px;
+            .hint-title {
+                font-weight: bold;
+            }
+        }
+    }
+    .correspondence-box {
+        display: flex;
+        margin-top: 0px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        border-top: 0px;
+        border-bottom: 1px solid #CCCCCC;
+        .correspondence-details{
+            font-size: 16px;
+            .correspondence-title {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .whatyoubuy-box {
+        .common-main-content.whatyoubuy-sub-box {
+            .pdf-box .pdf-item .item-img,
+            .pdf-box .pdf-item .item-title {
+                vertical-align: top;
+            }
+            .pdf-box .pdf-item img {
+                width: 32px;
+            }
+        }
+        .buy-review-sub-box {
+            .document-details {
+                .document-list {
+                    .document-item-details {
+                        .download-icon {
+                            position: absolute !important;
+                            margin-left: -12px !important;
+                        }
+                        .document-name {
+                            margin-left: 44px;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

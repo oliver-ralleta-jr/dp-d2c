@@ -1,0 +1,47 @@
+.document-tick {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    top: 10px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPCAYAAAAGRPQsAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACvSURBVHgBrc+xDcIwEIXhZ4NEywjpaCgyAhkhG7AJZhIGQJFHYAUKpCgVK9DQIRsfJ4RCnCgX5y98kotPd8Ac2fuahkJqVXOC9zkWq2KJlAiC34eVHsAzm77ZF0KA9KtAub1OwyIQfcuxHkiODUCU/ry23qVCjFXNAU5dYMNMgBhzjk913kTBkRDF0Lk20IohrQzKzVEK/bAY6JBJoDb2D3KjoS7WBkVQfwTaWw5hbyOdbqCLMrp1AAAAAElFTkSuQmCC');
+}
+
+.upload-tool-tip {
+    .selfie-image {
+        img {
+            width: 65px !important;
+            height: 65px !important;
+            opacity: .6 !important;
+		}
+	}
+	.tip-header {
+		color: #40b5cd;
+		font-size: 20px;
+	}
+	.grey-text {
+		font-size: 15px;
+		color: $color-label-grey;
+
+	}
+	.bold-text {
+		font-weight: bold;
+		color: $color-black;
+		font-size: 14px;
+	}
+	.bordered-right {
+		border-right: 1px solid $color-label-grey;
+	}
+	p.notes {
+	  font-size: 14px;
+	}
+	.list-entry {
+		padding-inline-start: 5px !important;
+		font-size: 14px;
+        margin-left: 10px;
+		li {
+			list-style-type: disc;
+		}
+	}
+}

@@ -1,0 +1,92 @@
+<div id="payment-option-summary" ng-if="vm.reqType !== 'PER'">
+  <div class="common-box-header" ng-class="{'isCollapse':vm.isCollapsed}">
+    <div class="row">
+      <div class="col-xs-10">
+        <h1>How do you like to make payment?</h1>
+      </div>
+      <div class="col-xs-2" ng-if="vm.showCollapse">
+        <a ng-class="{'isCollapse':vm.isCollapsed}" href="#" ng-click="vm.isCollapsed = !vm.isCollapsed">
+          <!-- <img ng-src="assets/images/hide-below-icon.png"> -->
+          <span class="glyphicon collapse-icon" ng-class="{'glyphicon-chevron-up': !vm.isCollapsed, 'glyphicon-chevron-down': vm.isCollapsed}"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="common-box-content col-xs-12" uib-collapse="vm.isCollapsed">
+    <div class="row">
+      <div class="payment-desc">For more information on payment methods, please
+        <a href="https://www.prudential.com.sg/services/payments" target="_blank" rel="noopener noreferrer">click here</a>
+      </div>
+    </div>
+    <div class="consent-radio row">
+      <div ng-repeat="option in vm.options">
+        <div class="col-xs-12 col-sm-{{12 / vm.options.length}}">
+          <div class="radio-inline">
+            <div class="radio">
+              <input type="radio" name="paymentOptions" id="{{option.label}}" title="{{option.label}}" value="{{option.value}}" ng-model="vm.product.paymentOption"
+                ng-checked="vm.product.paymentOption" ng-change="vm.onChangeHandler(option.value)" />
+              <label for="{{option.label}}">{{option.label}}</label>
+            </div>
+            <span class="info-tooltip no-margin" uib-tooltip-html="option.details" ng-if="option.value === vm.showToolTip"></span>
+          </div>
+        </div>
+      </div>
+      <p class="error-msg" ng-show="vm.errorMsg">{{vm.errorMsg}}</p>
+    </div>
+  </div>
+</div>
+
+<div id="{{vm.profile.type}}-payment-option" ng-if="vm.isPerDirectEntry">
+  <div class="payment-options details-common" ng-class="{'common-details-box':vm.summaryStep ==='DETAIL', 'common-job-box':vm.summaryStep ==='EDIT'}">
+    <div class="common-box-header" ng-class="{'isCollapse':vm.isCollapsed}" ng-show="vm.summaryStep !=='EDIT'">
+      <div class="row">
+        <div class="col-xs-10">
+          <h1>Payment Options</h1>
+        </div>
+        <div class="col-xs-2">
+          <a ng-class="{'isCollapse':vm.isCollapsed}" id="paymentOptionCommonHide" name="paymentOptionCommonHide" href="#" ng-click="vm.setStep()">
+            <span class="pull-right collapse-icon glyphicon" ng-class="{'glyphicon-chevron-up': !vm.isCollapsed, 'glyphicon-chevron-down': vm.isCollapsed}"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="common-box-content" uib-collapse="vm.isCollapsed">
+      <div ng-class="{'common-main-content':vm.summaryStep ==='DETAIL', 'combine-padding':vm.summaryStep ==='EDIT'}">
+        <div class="common-sub-box">
+          <div class="row each-group">
+            <div id="payment-option-summary">
+              <div class="common-box-content col-xs-12" uib-collapse="vm.isCollapsed">
+                  <div class="section-title" ng-show="vm.summaryStep =='EDIT'">
+                        Payment Options
+                  </div>
+                  <div class="per-payment-desc">For more information on payment methods, please
+                    <a href="https://www.prudential.com.sg/services/making-payments/ipay" target="_blank" rel="noopener noreferrer">click here</a>
+                  </div>
+                  <p class="grey-text">How do you wish to pay ?</p>
+                <div class="consent-radio row">
+                  <div ng-repeat="option in vm.perPaymentConfig">
+                    <div class="col-xs-12 col-sm-12">
+                      <div class="radio-inline">
+                        <div class="radio">
+                          <input type="radio" name="paymentOptions" id="{{option.label}}" title="{{option.label}}" value="{{option.value}}" ng-model="vm.product.paymentOption"
+                            ng-checked="vm.product.paymentOption" ng-change="vm.onChangeHandler(option.value)" />
+                          <label for="{{option.label}}">pay via {{option.label}}</label>
+                        </div>
+                        <span class="info-tooltip no-margin" uib-tooltip-html="option.details" ng-if="option.value === vm.showToolTip"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="error-msg" ng-show="vm.errorMsg">{{vm.errorMsg}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="btn-box text-right" ng-show="vm.summaryStep ==='DETAIL' && !vm.isCollapsed">
+        <button id="btnNextToUploadDocument" name="btnNextToUploadDocument" title="btnNextToUploadDocument" class="btn detail-btn detail-submit-btn" ng-click="vm.nextToUpload()">NEXT</button>
+      </div>
+    </div>
+  </div>
+</div>

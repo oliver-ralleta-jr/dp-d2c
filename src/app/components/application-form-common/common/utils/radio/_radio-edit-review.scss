@@ -1,0 +1,95 @@
+.radio-edit-review {
+    .choice-content {
+        overflow: hidden;
+    }
+    .checkbox-choice {
+        margin-bottom: 10px;
+    }
+    .box-choice {
+        float: left;
+        width: 20%;
+    }
+    .box-label {
+        margin-bottom: 10px
+    }
+    .radio-form-title {
+        @extend .font-size-34;
+        @extend .prusans-medium;
+        @extend .common-color-blue;
+        font-weight: inherit;
+        margin-bottom: 0;
+    }
+    .uncheck-radio-box,
+    .checked-radio-box,
+    .uncheck-check-box,
+    .checked-check-box {
+        display: none;
+    }
+    .uncheck-radio-box.marked,
+    .checked-radio-box.marked,
+    .uncheck-check-box.marked,
+    .checked-check-box.marked {
+        display: table;
+    }
+    .uncheck-radio-box .label-img,
+    .checked-radio-box .label-img,
+    .uncheck-check-box .label-img,
+    .checked-check-box .label-img,
+    .label-img-checked .img-loop {
+        background-color: #ffffff;
+        border-radius: 20px;
+        height: 20px;
+        width: 20px;
+        outline: none;
+        display: table-cell;
+        cursor: pointer;
+        border: 2px solid #d7d7d7;
+    }
+    .label-img-checked {
+        position: relative;
+        width: 20px;
+        height: 20px;
+    }
+    .label-img-checked .img-loop {
+        position: absolute;
+        border: 2px solid #d7d7d7;
+        background-color: transparent;
+        z-index: 2;
+    }
+    .uncheck-radio-box .label-text,
+    .checked-radio-box .label-text,
+    .uncheck-check-box .label-text,
+    .checked-check-box .label-text {
+        @extend .prusans-medium;
+        @extend .common-color-black;
+        @extend .font-size-34;
+        display: table-cell;
+        padding-left: 10px;
+        vertical-align: middle;
+        line-height: 1.2;
+    }
+    .checked-radio-box.marked .label-img-checked .img-circle {
+        position: absolute;
+        @extend .common-background-red;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        border: 5px solid #fff;
+        z-index: 1;
+    }
+    .answer-text {
+        @extend .common-color-black;
+        @extend .font-size-34;
+        @extend .prusans-medium;
+        word-wrap: break-word;
+        margin-bottom: 0;
+    }
+    @media only screen and (max-width:767px) {
+        .box-choice {
+            width: 50%;
+        }
+        .radio-form-title{
+            font-size: font-size-pt(30);
+        }
+    }
+}

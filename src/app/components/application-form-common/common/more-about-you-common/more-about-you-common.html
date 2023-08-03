@@ -1,0 +1,284 @@
+<div id="{{vm.profile.type}}-more-about-you">
+    <div class="about-you details-common" ng-class="{'common-details-box':(vm.summaryStep ==='DETAIL'), 'common-job-box':(vm.summaryStep ==='EDIT')}">
+        <div class="common-box-header" ng-class="{'isCollapse':vm.isCollapsed}" ng-show="vm.summaryStep !=='EDIT'">
+            <div class="row">
+                <div class="col-xs-10">
+                    <h1>About you</h1>
+                </div>
+                <div class="col-xs-2">
+                    <a ng-class="{'isCollapse':vm.isCollapsed}" id="moreAboutYouCommonHide" name="moreAboutYouCommonHide" href="#" ng-click="vm.setStep()">
+                        <span class="pull-right collapse-icon glyphicon"
+                            ng-class="{'glyphicon-chevron-up': !vm.isCollapsed, 'glyphicon-chevron-down': vm.isCollapsed}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="common-box-content" uib-collapse="vm.isCollapsed">
+            <div ng-class="{'common-main-content':(vm.summaryStep ==='DETAIL'), 'combine-padding':(vm.summaryStep ==='EDIT')}">
+                <div class="common-sub-box">
+                    <form class="content-form" name="moreAboutYouForm" novalidate>
+                        <div class="row each-group" ng-if="vm.reqType === 'PER' || vm.reqType === 'PC' || vm.reqType === 'PAT'">
+                            <div class="col-xs-12 col-sm-6 form-group" >
+                                <label class="static-label" for="residencyStatus">Residency Status</label>
+                                <select
+                                    title="residencyStatus"
+                                    name="residencyStatus"
+                                    class="form-control dropdown-input input-summary-style isBlurValidation"
+                                    ng-model="vm.residencyCode"
+                                    ng-options="e.option for e in vm.residencyOptions track by e.value" required>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 form-group" ng-if="vm.residencyCode.value === 3">
+                                <label class="static-label" for="passType">Pass Type</label>
+                                <select
+                                    title="passType"
+                                    name="passType"
+                                    class="form-control dropdown-input input-summary-style isBlurValidation"
+                                    ng-model="vm.passType"
+                                    ng-change="vm.handlePassTypeChange();"
+                                    ng-options="e.option for e in vm.passTypeOptions track by e.value" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="each-group row" ng-if="((vm.profile.identity != 1 || (vm.reqType === 'PER' || vm.reqType === 'PC' || vm.reqType === 'PAT')) && !vm.myInfoSelected) || vm.myInfoHasError">
+                            <div class="col-xs-4 col-sm-6">
+                                <label class="static-label" for="txtNationality">Nationality</label>
+                                <span class="error-msg" ng-show="vm.nationality && moreAboutYouForm.nationality.$invalid && moreAboutYouForm.nationality.$isOnBlur">Please enter a valid nationality</span>
+                                <span class="error-msg" ng-show="!vm.nationality && moreAboutYouForm.nationality.$isOnBlur">Please enter a valid nationality</span>
+                                <select id="txtNationality"
+                                    title="nationality"
+                                    name="nationality"
+                                    class="form-control dropdown-input input-summary-style isBlurValidation"
+                                    ng-model="vm.nationality"
+                                    ng-options="e.option for e in vm.allNationality track by e.value"
+                                    required>
+                                </select>
+                            </div>
+                            <div class="col-xs-8 col-sm-6" ng-if="vm.nationality.value=='OTH'">
+                                <label class="static-label" for="txtSpecifyNationality">If others, please specify</label>
+                                <span class="error-msg" ng-show="!vm.othNationality && moreAboutYouForm.othNationality.$invalid && moreAboutYouForm.othNationality.$isOnBlur">Please enter a valid nationality</span>
+                                <span class="error-msg" ng-show="vm.othNationality && moreAboutYouForm.othNationality.$error.pattern">Please enter a valid nationality</span>
+                                <input type="text" class="form-control input-summary-style isBlurValidation" id="othNationality" title="othNationality" name="othNationality" ng-model="vm.othNationality" required maxlength="40" ng-pattern="/^(?![0-9 ])([a-zA-Z0-9 ])*$/">                            	
+                            </div>
+                        </div>
+                        <div class="section-title">Residency details</div>
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL')">
+                            <questions-pru filter-question="vm.sectionQ1" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                        <!-- This is also for adding Residential Address when we have policy incepted residential address change question answer as yes-->
+                        <div ng-show="!vm.disableAddressFields">
+                        <div class="each-group form-group" ng-if="vm.summaryStep ==='DETAIL' || (vm.summaryStep ==='EDIT' && !vm.showInputResidential)">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType !== 'PS'" class="static-label label-grey focus error" for="txtResidentialPostalCode">Residential Postcode</label>
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType === 'PS'" class="static-label label-grey focus error" for="txtResidentialPostalCode">Postcode</label>
+                                    <label ng-if="vm.showForeignAddress" class="static-label label-grey focus error" for="txtResidentialPostalCode">Postcode</label>
+                                    <span class="error-msg" ng-show="vm.residentialPostalCode && moreAboutYouForm.residentialPostalCode.$invalid && moreAboutYouForm.residentialPostalCode.$isOnBlur">Please enter a valid residential postcode</span>
+                                    <span class="error-msg" ng-show="!vm.residentialPostalCode && moreAboutYouForm.residentialPostalCode.$invalid && moreAboutYouForm.residentialPostalCode.$isOnBlur">Please enter a valid residential postcode</span>
+                                </div>
+                                <div class="col-xs-4 col-sm-6">
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtResidentialPostalCode" title="residentialPostalCode" name="residentialPostalCode" ng-change="vm.onPostalCodeChange('residential',vm.residentialPostalCode);" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 1000, 'blur': 0} }" ng-model="vm.residentialPostalCode" required only-number maxlength="6">
+                                </div>
+                                <div class="col-xs-8 col-sm-6">
+                                    <button ng-if="!vm.showForeignAddress" id="btnRetrieveResidentialAddress" name="btnRetrieveResidentialAddress" title="retrieveResidentialAddress" class="retrieve-btn-active" ng-disabled="!vm.residentialPostalCode" ng-click="vm.generateAddress('residential',vm.residentialPostalCode)">Retrieve address</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row each-group" ng-if="vm.summaryStep ==='DETAIL' || (vm.summaryStep ==='EDIT' && !vm.showInputResidential)">
+                            <div class="col-xs-12 col-sm-6 form-group">
+                                <label ng-if="!vm.showForeignAddress" class="static-label" for="txtResidentialBlockNo">Block Number</label>
+                                <label ng-if="vm.showForeignAddress" class="static-label" for="txtResidentialBlockNo">Block/House Number</label>
+                                <span class="error-msg" ng-show="vm.residentialBlockNo && moreAboutYouForm.residentialBlockNo.$error.pattern">Please enter a valid block number</span>
+                                <span class="error-msg" ng-show="!vm.residentialBlockNo && moreAboutYouForm.residentialBlockNo.$invalid && moreAboutYouForm.residentialBlockNo.$isOnBlur">Please enter a valid block number</span>
+                                <input type="text" class="form-control input-summary-style isBlurValidation" id="txtResidentialBlockNo" title="residentialBlockNo" required name="residentialBlockNo" ng-model="vm.residentialBlockNo" ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                            </div>
+                            <div class="col-xs-12 col-sm-6 form-group">
+                                <label ng-if="!vm.showForeignAddress && vm.reqType !== 'PS'" class="static-label" for="txtResidentialStreet">Residential Street</label>
+                                <label ng-if="!vm.showForeignAddress && vm.reqType === 'PS'" class="static-label" for="txtResidentialStreet">Street</label>
+                                <label ng-if="vm.showForeignAddress" class="static-label" for="txtResidentialStreet">Address Line 1</label>
+                                <span class="error-msg" ng-show="vm.residentialStreet && moreAboutYouForm.residentialStreet.$invalid && moreAboutYouForm.residentialStreet.$isOnBlur && vm.residentialStreet.length < 30">Please enter a valid residential street</span>
+                                <span class="error-msg" ng-show="!vm.residentialStreet && moreAboutYouForm.residentialStreet.$invalid && moreAboutYouForm.residentialStreet.$isOnBlur">Please enter a valid residential street</span>
+                                <span class="error-msg" ng-show="vm.residentialStreet && moreAboutYouForm.residentialStreet.$error.pattern">Please enter a valid residential street</span>
+                                <!--PACSDP -3102 To align field length validations [Street Name]-->
+                                <span class="error-msg" ng-show="vm.residentialStreet.length > 30">Residential Street can't exceed 30 characters</span>
+                                <input type="text" class="form-control input-summary-style isBlurValidation" id="txtResidentialStreet" title="residentialStreet" name="residentialStreet" ng-model="vm.residentialStreet" maxlength="30" required ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                            </div>
+                        </div>
+                        <div class="each-group" ng-if="vm.summaryStep ==='DETAIL' || (vm.summaryStep ==='EDIT' && !vm.showInputResidential)">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 form-group">
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType !== 'PS'" class="static-label" for="txtResidentialBuilding">Residential Building Name</label>
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType === 'PS'" class="static-label" for="txtResidentialBuilding">Building Name</label>
+                                    <label ng-if="vm.showForeignAddress" class="static-label" for="txtResidentialBuilding">Address Line 2</label>
+                                    <span class="error-msg" ng-show="moreAboutYouForm.residentialBuilding.$invalid && moreAboutYouForm.residentialBuilding.$isOnBlur">Please enter a valid residential building</span>
+                                    <span class="error-msg" ng-show="vm.residentialBuilding && moreAboutYouForm.residentialBuilding.$error.pattern">Please enter a valid residential building</span>
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtResidentialBuilding" title="residentialBuilding" name="residentialBuilding" ng-model="vm.residentialBuilding" ng-blur="vm.setMailingAddress()" ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                                <div class="col-xs-12 col-sm-6 form-group">
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType !== 'PS'" class="static-label" for="txtResidentialUnitNo">Level and Unit</label>
+                                    <label ng-if="!vm.showForeignAddress && vm.reqType === 'PS'" class="static-label" for="txtResidentialUnitNo">Unit Number</label>
+                                    <label ng-if="vm.showForeignAddress" class="static-label" for="txtResidentialUnitNo">City / State</label>
+                                    <span class="error-msg" ng-show="vm.residentialUnitNo && ((moreAboutYouForm.residentialUnitNo.$invalid && moreAboutYouForm.residentialUnitNo.$isOnBlur) || moreAboutYouForm.residentialUnitNo.$error.pattern) ">Please enter a valid level and unit number</span>
+                                    <span class="error-msg right-error" ng-show="!vm.residentialUnitNo && moreAboutYouForm.residentialUnitNo.$invalid && moreAboutYouForm.residentialUnitNo.$isOnBlur">Please enter a valid level and unit number</span>
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtResidentialUnitNo" title="residentialUnitNo" name="residentialUnitNo" ng-model="vm.residentialUnitNo" ng-blur="vm.setMailingAddress()" ng-required="(vm.residentialAddressType == 'H' || vm.residentialAddressType == 'C')" ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="field-support" ng-if="vm.reqType !== 'PS'">The address on your NRIC must tally with the residential address you provide. Otherwise, please provide documentary proof (e.g. state issued document or bank statement in your own name).</span>
+                                <span class="field-support" ng-if="vm.reqType === 'PS'">The address stated here will be used on this application and updated on all your existing policy(ies). All correspondence will be sent to this residential address unless you specify a mailing address.</span>
+                            </div>
+                        </div>
+                      </div>
+                        <!-- This is the condition to display existing customer address and when we have policy incepted residential address change question answer as no -->
+                        <div class="each-group" ng-show="(vm.summaryStep =='EDIT' && vm.showInputResidential) || vm.disableAddressFields">
+                            <label class="view-form-title">Residential Address</label>
+                            <p class="view-form-input" ng-if="vm.residentialBlockNo.length > 4">{{(vm.residentialBlockNo + ' ' + vm.residentialStreet) | mask:-4}} </p>
+                            <p class="view-form-input" ng-if="vm.residentialBlockNo.length <= 4">{{vm.residentialBlockNo}}&nbsp;{{vm.residentialStreet | mask:(vm.residentialBlockNo.length - 4)}} </p>
+                            <p class="view-form-input" ng-if="!vm.loginStatus">{{(vm.residentialUnitNo + ' ' + vm.residentialBuilding) | mask}}</p>
+                            <p class="view-form-input">{{vm.residentialPostalCode | mask:4}}</p>
+                            <span class="field-support">The address on your NRIC must tally with the residential address you provide. Otherwise, please provide documentary proof (e.g. state issued document or bank statement in your own name).</span>
+                        </div>
+                        <!--Has your residential address changed-->
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL')">
+                            <questions-pru filter-question="vm.section" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                        <!--Is this also your mailing address-->
+                        <div class="each-group" ng-show="vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL'">
+                            <label class="static-label">Is this also your mailing address?</label>
+                            <div class="consent-radio">
+                                <label class="radio-inline">
+                                    <div class="radio">
+                                        <input type="radio" name="isMailingAddress" id="isMailingAddress" title="isMailingAddress" value="true" ng-change="vm.setUploadList(); vm.setMailingAddress()" ng-model="vm.isMailingAddress" required>
+                                        <label for="isMailingAddress"> Yes</label>
+                                    </div>
+                                </label>
+                                <label class="radio-inline">
+                                    <div class="radio">
+                                        <input type="radio" name="isMailingAddress" id="isNotMailingAddress" title="isNotMailingAddress" value="false" ng-change="vm.setUploadList(); vm.setMailingAddress(); vm.clearMailingAddress()" ng-model="vm.isMailingAddress" required>
+                                        <label for="isNotMailingAddress"> No</label>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="each-group" ng-if="vm.isMailingAddress == 'false'">
+                            <div class="row each-sub-group" ng-show="vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL'">
+                                <div class="col-xs-12">
+                                    <div ng-show="vm.summaryStep ==='DETAIL' || vm.summaryStep =='EDIT'">
+                                        <label ng-if="!vm.isForeignMailingCountry" class="static-label label-grey focus error" for="txtMailingPostalCode">What is your mailing postcode?</label>
+                                        <label ng-if="vm.isForeignMailingCountry" class="static-label label-grey focus error" for="txtMailingPostalCode">Postcode</label>
+                                        <span class="error-msg" ng-show="vm.mailingPostalCode && moreAboutYouForm.mailingPostalCode.$invalid && moreAboutYouForm.mailingPostalCode.$isOnBlur">Please enter a valid mailing postcode</span>
+                                        <span class="error-msg" ng-show="!vm.mailingPostalCode && moreAboutYouForm.mailingPostalCode.$invalid && moreAboutYouForm.mailingPostalCode.$isOnBlur">Please enter a valid mailing postcode</span>
+                                        <span class="error-msg" ng-show="vm.mailingPostalCode && moreAboutYouForm.mailingPostalCode.$error.pattern">Please enter a valid mailing postcode</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4 col-sm-6" ng-show="(vm.summaryStep ==='DETAIL' || vm.summaryStep =='EDIT')">
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtMailingPostalCode" title="mailingPostalCode" name="mailingPostalCode" ng-model="vm.mailingPostalCode" ng-change="vm.onPostalCodeChange('mailing',vm.mailingPostalCode);" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 1000, 'blur': 0} }" required only-number maxlength="6">
+                                </div>
+                                <div class="col-xs-8 col-sm-6" ng-if="!vm.isForeignMailingCountry && (vm.summaryStep ==='DETAIL' || vm.summaryStep =='EDIT')">
+                                    <button id="btnRetrieveMailingAddress" name="btnRetrieveMailingAddress" title="retrieveMailingAddress" class="retrieve-btn-active" ng-disabled="!vm.mailingPostalCode" ng-click="vm.generateAddress('mailing',vm.mailingPostalCode)">Retrieve address</button>
+                                </div>
+                            </div>
+                            <div class="row each-sub-group" ng-show="vm.summaryStep ==='DETAIL' || vm.summaryStep =='EDIT'">
+                                <div class="col-xs-12 col-sm-6 form-group">
+                                    <label ng-if="!vm.isForeignMailingCountry" class="static-label" for="txtMailingBlockNo">Mailing Block Number</label>
+                                    <label ng-if="vm.isForeignMailingCountry" class="static-label" for="txtMailingBlockNo">Block/House Number</label>
+                                    <span class="error-msg" ng-show="!vm.mailingBlockNo && moreAboutYouForm.mailingBlockNo.$invalid && moreAboutYouForm.mailingBlockNo.$isOnBlur">Please enter a valid mailing block number</span>
+                                    <span class="error-msg" ng-show="vm.mailingBlockNo && moreAboutYouForm.mailingBlockNo.$error.pattern">Please enter a valid mailing block number</span>
+                                    <span class="error-msg" ng-show="vm.mailingBlockNo.length > 30">Mailing Block Number can't exceed 30 Characters</span>
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtMailingBlockNo" title="mailingBlockNo" name="mailingBlockNo" required ng-model="vm.mailingBlockNo" maxlength="30" ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                                <div class="col-xs-12 col-sm-6 form-group" ng-show="vm.summaryStep ==='DETAIL' || vm.summaryStep =='EDIT'">
+                                    <label ng-if="!vm.isForeignMailingCountry" class="static-label" for="txtMailingStreet">Mailing Street</label>
+                                    <label ng-if="vm.isForeignMailingCountry" class="static-label" for="txtMailingStreet">Address Line 1</label>
+                                    <span class="error-msg" ng-show="vm.mailingStreet && moreAboutYouForm.mailingStreet.$invalid && moreAboutYouForm.mailingStreet.$isOnBlur && vm.mailingStreet.length < 30">Please enter a valid mailing street</span>
+                                    <span class="error-msg" ng-show="!vm.mailingStreet && moreAboutYouForm.mailingStreet.$invalid && moreAboutYouForm.mailingStreet.$isOnBlur">Please enter a valid mailing street</span>
+                                    <span class="error-msg" ng-show="vm.mailingStreet && moreAboutYouForm.mailingStreet.$error.pattern">Please enter a valid mailing street</span>
+                                    <!--PACSDP -3102 To align field length validations [Street Name]-->
+                                    <span class="error-msg" ng-show="vm.mailingStreet.length > 30">Mailing Street can't exceed 30 Characters</span>
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtMailingStreet" title="mailingStreet" name="mailingStreet" ng-model="vm.mailingStreet" maxlength="30" required ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                            </div>
+                            <div class="row each-sub-group" ng-show="vm.summaryStep ==='DETAIL' || vm.summaryStep ==='EDIT' ">
+                                <div class="col-xs-12 col-sm-6 form-group">
+                                    <label ng-if="!vm.isForeignMailingCountry" class="static-label" for="txtMailingBuilding">Mailing Building Name</label>
+                                    <label ng-if="vm.isForeignMailingCountry" class="static-label" for="txtMailingBuilding">Address Line 2</label>
+                                    <span class="error-msg " ng-show="vm.mailingBuilding && moreAboutYouForm.mailingBuilding.$invalid && moreAboutYouForm.mailingBuilding.$isOnBlur">Please enter a valid mailing building name</span>
+                                    <span class="error-msg" ng-show="vm.mailingBuilding && moreAboutYouForm.mailingBuilding.$error.pattern">Please enter a valid mailing building name</span>
+                                    <!--<span class="error-msg right-error" ng-show="!vm.mailingBuilding && moreAboutYouForm.mailingBuilding.$invalid && moreAboutYouForm.mailingBuilding.$isOnBlur">This is a required field</span>-->
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtMailingBuilding" title="mailingBuilding" name="mailingBuilding" ng-model="vm.mailingBuilding" ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                                <div class="col-xs-12 col-sm-6 form-group">
+                                    <label ng-if="!vm.isForeignMailingCountry" class="static-label" for="txtMailingUnitNo">Level and Unit</label>
+                                    <label ng-if="vm.isForeignMailingCountry" class="static-label" for="txtMailingUnitNo">City / State</label>
+                                    <span class="error-msg " ng-show="vm.mailingUnitNo && moreAboutYouForm.mailingUnitNo.$invalid && moreAboutYouForm.mailingUnitNo.$isOnBlur">Please enter a valid level and unit</span>
+                                    <span class="error-msg right-error" ng-show="!vm.mailingUnitNo && moreAboutYouForm.mailingUnitNo.$invalid && moreAboutYouForm.mailingUnitNo.$isOnBlur">Please enter a valid level and unit</span>
+                                    <input type="text" class="form-control input-summary-style isBlurValidation" id="txtMailingUnitNo" title="mailingUnitNo" name="mailingUnitNo" ng-model="vm.mailingUnitNo" required ng-trim=false ng-pattern="/^(['&quot;+a-zA-Z0-9()#.@,%&/-])+(\s['&quot;+a-zA-Z0-9()#.@,%&/-]+)*['&quot;+a-zA-Z0-9()#.@,%&/-\s]{0,1}$/">
+                                </div>
+                            </div>
+                            <div class="each-sub-group row" ng-if="vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL'">
+                            	<div class="col-xs-12 col-sm-6 form-group">
+                            		<label class="static-label" for="txtMailingCountry">Mailing Country</label>
+                                	<span class="error-msg" ng-show="vm.mailingCountry && moreAboutYouForm.mailingCountry.$invalid && moreAboutYouForm.mailingCountry.$isOnBlur">Please enter a valid country</span>
+                                	<span class="error-msg" ng-show="!vm.mailingCountry && moreAboutYouForm.mailingCountry.$isOnBlur">Please enter a valid country</span>
+                                	<select id="txtMailingCountry" title="mailingCountry" name="mailingCountry" class="form-control dropdown-input input-summary-style isBlurValidation" ng-model="vm.mailingCountry" ng-options="e.option for e in vm.allresidentialCountry track by e.value"
+                                    required ng-change="vm.checkForeignCountry()"></select>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 form-group" ng-if="vm.mailingCountry.value=='OTH'">
+                                        <label class="static-label" for="txtSpecifyMailingCountry">If others, please specify</label>
+                                     <span class="error-msg" ng-show="!vm.othMailingCountry && moreAboutYouForm.othMailingCountry.$isOnBlur">Please enter a valid mailing country</span>
+                                     <input type="text" class="form-control input-summary-style isBlurValidation" id="othMailingCountry" title="othMailingCountry" name="othMailingCountry" ng-model="vm.othMailingCountry" required maxlength="40" ng-pattern="/^(?![0-9 ])([a-zA-Z0-9 ])*$/">                            	 
+                                </div>
+                           </div>
+                           <span class="field-support">The mailing address will apply to this application only. If you wish to change your mailing address for your existing policy(ies), please submit a separate written request.</span>
+                        </div>
+                      <div class="each-group" ng-if="!(vm.reqType ==='PS' && vm.isExistCustomerDecl ==='false')">
+                        <div class="section-title">Employment details</div>
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL')">
+                          <questions-pru filter-question="vm.sectionQ2" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                        <div class="each-group form-group" ng-show="vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL'">
+                          <label ng-if="vm.reqType !== 'PS'"class="static-label" for="txtAnnualIncome">What is your annual salary?</label>
+                          <label ng-if="vm.reqType === 'PS'"class="static-label" for="txtAnnualIncome">Your annual salary($S)?</label>
+                          <span class="error-msg" ng-show="vm.annualIncome && moreAboutYouForm.annualIncome.$invalid && moreAboutYouForm.annualIncome.$isOnBlur">Please enter a valid annual salary</span>
+                          <span class="error-msg" ng-show="!vm.annualIncome && moreAboutYouForm.annualIncome.$isOnBlur">Please enter a valid annual salary</span>
+                          <div>
+                            <span class="view-form-input" ng-if="vm.annualIncome">S$</span>
+                            <input type="text" class="form-control input-summary-style isBlurValidation" ng-class="{'salary-display-inline': true}" id="txtAnnualIncome" title="annualIncome" name="annualIncome" ng-model="vm.annualIncome" ng-focus="vm.unFormatSalary()"
+                                   ng-blur="vm.formatSalary()" ng-change="vm.validateLength()" required only-number>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-if="vm.reqType !== 'PS'">
+                        <div class="section-title">Regulatory details</div>
+                        <div class="tax-residency-details" ng-if="vm.reqType === 'PER'">
+                            <h1>Details of Tax Residence(s)</h1>
+                            <p class="details-text">
+                                Please provide the countries in which you are a tax resident and the associated Tax Identification Numbers(TIN)<span class="info-tooltip no-margin" uib-tooltip-html="vm.taxtooltip"></span>
+                            </p>
+                            <p class="details-text more-info">For More Information on Tax Residency and Tax Identification Numbers, please refer to the OECD Website links below:</p>
+                            <div class="oecd-website-link"><a href="{{vm.OecdTaxResidencyLink}}" target="_blank">OECD Tax Residency</a></div>
+                            <div class="oecd-website-link"><a href="{{vm.OecdTaxIdentificationLink}}" target="_blank">OECD Tax Identification Numbers</a></div>
+                        </div>
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL')">
+                            <questions-pru filter-question="vm.sectionQ3" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                      </div>
+                      <div ng-if="vm.reqType === 'PS'">
+                        <div class="section-title">Previous Insurance Details</div>
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL' || vm.myInfoSelected)">
+                            <questions-pru filter-question="vm.sectionQ3" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                        <p class="acknowledgment-title">Client's Acknowledgement</p>
+                        <div class="each-group" ng-show="(vm.summaryStep ==='EDIT' || vm.summaryStep ==='DETAIL' || vm.myInfoSelected)">
+                            <questions-pru filter-question="vm.sectionQ4" questionnaire-json="vm.moreAboutYouQ" check-if-kickout="vm.checkIfKickout(qCode)" questionnaire-cat="vm.questionRequest.cat" edit-mode="vm.summaryStep == 'EDIT' || vm.summaryStep == 'DETAIL'"></questions-pru>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="btn-box text-right" ng-show="vm.summaryStep ==='DETAIL' && !vm.isCollapsed">
+            <button id="btnNextToHealth" name="btnNextToHealth" title="btnNextToHealth" class="btn detail-btn detail-submit-btn" ng-click="vm.validateForm()">NEXT</button>
+        </div>
+    </div>
+</div>

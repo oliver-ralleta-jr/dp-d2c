@@ -1,0 +1,63 @@
+<div class="consent-box details-common" ng-if="!vm.comeFromEDM && vm.medicalReport" id="medicalReportConsentBox">
+    <div class="common-box-header" ng-class="{'isCollapse':vm.isMedicalCollapsed}">
+        <div class="row">
+            <div class="col-xs-10">
+                <h1>Consent for Release of Medical Reports to Prudential</h1>
+            </div>
+            <div class="col-xs-2" ng-if="vm.showCollapse">
+            <a ng-class="{'isCollapse':vm.isMedicalCollapsed}" href="#" ng-click="vm.isMedicalCollapsed = !vm.isMedicalCollapsed">
+                <span class="glyphicon collapse-icon" ng-class="{'glyphicon-chevron-up': !vm.isMedicalCollapsed, 'glyphicon-chevron-down': vm.isMedicalCollapsed}"></span>
+            </a>
+            </div>
+        </div>
+    </div>
+    <div class="common-box-content" uib-collapse="vm.isMedicalCollapsed">
+        <div class="">
+            <div class="common-main-content ">
+                <form name="consentForm" novalidate>
+                    <div class="common-sub-box">
+                        <span class="error-msg" ng-show="vm.showMedicalError">This is a required field</span>
+                        <div class="checkbox consent-checkbox">
+                            <input type="checkbox" class="isBlurValidation" id="medicalReportValue" name="medicalReportValue" ng-model="vm.medicalReportValue"
+                            ng-change="vm.showMedicalError = !vm.medicalReportValue">
+                            <label for="medicalReportValue">
+                                I expressly authorize and consent to Prudential, its officers and/or employees extracting my relevant medical information from relevant medical practitioners in order to process any claims in relation to this policy.
+                                <span>I understand that this consent only allows Prudential to extract medical information strictly in relation to this policy only and only such as is reasonably necessary to process the claim(s).</span>
+                                <span>I further understand that this consent shall continue to be valid and effective unless I withdraw my consent by informing Prudential in the prescribed manner.</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="consent-box details-common" ng-if="!vm.comeFromEDM && !vm.medicalReport">
+    <div class="common-box-header" ng-class="{'isCollapse':vm.isCollapsed}">
+        <div class="row">
+            <div class="col-xs-10">
+                <h1>Marketing Consent</h1>
+            </div>
+            <div class="col-xs-2" ng-if="vm.showCollapse">
+                <a ng-class="{'isCollapse':vm.isCollapsed}" href="#" ng-click="vm.isCollapsed = !vm.isCollapsed">
+                  <span class="glyphicon collapse-icon" ng-class="{'glyphicon-chevron-up': !vm.isCollapsed, 'glyphicon-chevron-down': vm.isCollapsed}"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="common-box-content" uib-collapse="vm.isCollapsed">
+        <div class="">
+            <div class="common-main-content ">
+                <form name="consentForm" novalidate>
+                    <div class="common-sub-box">
+                        <div class="checkbox consent-checkbox">
+                            <input type="checkbox" class="isBlurValidation" id="marketingConsent" name="marketingConsent" ng-model="vm.marketingConsent" ng-true-value="'Y'" ng-false-value="'N'"
+                            ng-change="vm.checkConsent()">
+                          <label for="marketingConsent">I confirm that I have read, understood and given my consent for Prudential Assurance Company Singapore (Pte) Limited and its related corporations, respective representatives, agents, third party service providers, contractors and/or appointed distribution/business partners (collectively referred to as "Prudential and its authorised representatives") to collect, use, disclose and/or process my personal data for the purpose of contacting me about products and services distributed, marketed and/or introduced by Prudential and its authorised representatives through marketing activities, via all channels, including but not limited to SMS, social media, in-app push notification, phone call etc, and using my contact details which Prudential and its authorised representatives has in its records from time to time, in accordance to the Prudential's Privacy Notice available at <a href="https://www.prudential.com.sg/Privacy-Notice" target="_blank">https://www.prudential.com.sg/Privacy-Notice</a>.<br><br>If I have any existing Prudential policy(ies) or earlier insurance application, I understand that this consent will supersede my previous consent and any change will take effect 21 days from the date of commencement of cover.</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

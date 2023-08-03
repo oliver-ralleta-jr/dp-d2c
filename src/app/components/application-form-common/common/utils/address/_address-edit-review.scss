@@ -1,0 +1,25 @@
+.address-edit-review {
+    .text-for-edit {
+        float: right;
+        font-size: 0.7rem !important;
+        font-weight: normal !important;
+        color: #636363;
+    }
+    .edit-review {
+        margin-top: 0px !important;
+    }
+    .warning-text {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .mailing-warning-text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .edit-status {
+        border-bottom: dashed;
+        border-color: #949494;
+    }
+}

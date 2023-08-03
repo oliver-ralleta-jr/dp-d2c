@@ -1,0 +1,32 @@
+<div class="radio-edit-review">
+    <!-- error message -->
+    <p ng-show="vm.errorMessage" class="error-msg" ng-bind="vm.errorMessage"></p>
+    <!-- edit mode -->
+    <div ng-show="vm.editMode" class="choice-content">
+        <div class="box-label">
+            <label class="radio-form-title" ng-bind-html="vm.radioLabel"></label>
+        </div>
+        <div class="" ng-repeat="choice in vm.radioChoices" ng-class="{'checkbox-choice' : (vm.radioChoices.length > 2), 'box-choice' : (vm.radioChoices.length <= 2)}" name="{{vm.radioName}}">
+            <div class="uncheck-radio-box" id="{{vm.radioName}}-uncheck" name="{{vm.radioName}}-uncheck" ng-class="{marked : !vm.isMarked(choice)}" ng-click="vm.mark(choice)">
+                <span class="label-img" id="{{vm.radioName}}-uncheck-img" name="{{vm.radioName}}-uncheck-img"></span>
+                <span class="label-text text-capitalize">{{choice.label.toLowerCase()}}</span>
+            </div>
+            <div class="checked-radio-box" ng-class="{marked : vm.isMarked(choice)}" ng-click="vm.mark(choice)" id="{{vm.radioName}}-checked" name="{{vm.radioName}}-checked">
+                <div class="label-img-checked">
+                    <span class="img-loop" id="{{vm.radioName}}-checked-loop" name="{{vm.radioName}}-checked-loop"></span>
+                    <span class="img-circle" id="{{vm.radioName}}-checked-circle" name="{{vm.radioName}}-checked-circle"></span>
+                </div>
+                <span class="label-text text-capitalize">{{choice.label.toLowerCase()}}</span>
+            </div>
+        </div>
+    </div>
+    <!-- review mode -->
+    <!--PD-1639: Pencil icons in editable fields on review summary-->
+    <div ng-show="!vm.editMode" class="radio-review-content">
+        <label class="radio-form-title" ng-bind-html="vm.radioLabel"></label>
+        <span ng-show="vm.selectMode !== 'EDIT' && !vm.loginStatus" ng-click="vm.isEditAction()" id="{{vm.radioName}}-edit" name="{{vm.radioName}}-edit">
+      <img class="edit-pencil" ng-src="assets/images/svg/edit.svg">
+    </span>
+        <p class="answer-text" name="{{vm.radioName}}">{{vm.answer.label || 'N/A'}}</p>
+    </div>
+</div>

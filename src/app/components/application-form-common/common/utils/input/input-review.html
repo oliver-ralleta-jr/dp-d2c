@@ -1,0 +1,50 @@
+<div>
+    <!-- display mode for review summary -->
+    <div ng-show="!vm.isEdit && vm.selectMode !== 'DETAIL'">
+        <!--PD-1639: Pencil icons in editable fields on review summary-->
+    	<label class="view-form-title">{{vm.inputDetails.labelValue || 'N/A'}}&nbsp;&nbsp;&nbsp;
+            <span id="{{vm.inputId}}-edit" name="{{vm.inputId}}-edit" ng-show="vm.selectMode !== 'EDIT' && !vm.loginStatus" ng-click="vm.isEditAction()"><img class="edit-pencil" ng-src="assets/images/svg/edit.svg"></span>
+        </label>
+        <p class="view-form-input" ng-if="!vm.withDollar && (vm.inputDetails.inputName != 'nric' || selectMode == 'DETAIL')">{{vm.inputValue}}</p>
+        <p class="view-form-input" ng-if="vm.withDollar">S${{vm.inputValue}}</p>
+        <p class="view-form-input" ng-if="vm.inputDetails.inputName == 'nric' && selectMode != 'DETAIL'">{{vm.inputValue | mask:4}}</p>
+    </div>
+    <!-- edit mode for review summary -->
+    <div ng-show="vm.isEdit || vm.selectMode === 'DETAIL'">
+    	<label class="static-label"
+        for="{{vm.inputId}}"
+        ng-class="{'empty': !vm.inputValue && !vm.onFocus,'error':(!vm.inputValue && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$isOnBlur) || (vm.inputValue && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$invalid && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$isOnBlur),'edit':vm.onFocus,'focus': vm.onFocus || vm.inputValue}">{{vm.inputDetails.labelValue}}</label>
+        <span class="error-msg error" ng-show="vm.inputValue && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$invalid && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$isOnBlur">Please enter a valid {{vm.inputDetails.inputName}}</span>
+        <span class="error-msg" ng-show="!vm.inputValue && vm.aboutYouForm.{{vm.inputDetails.inputName}}.$isOnBlur">Please enter a valid {{vm.inputDetails.inputName}}</span>
+        <!-- normal input-->
+        <span class="view-form-input" ng-if="vm.withDollar">S$</span>
+    	<input
+        ng-class="{'medium-input-style': vm.inputDetails.inputName !== 'email'}"
+        ng-if="!vm.inputDetails.validationType"
+        type="text"
+        name="{{vm.inputDetails.inputName}}"
+        title="{{vm.inputDetails.inputName}}"
+        id="{{vm.inputId}}"
+        class="form-control input-summary-style isBlurValidation"
+        ng-model="vm.inputValue"
+        ng-blur="vm.onFocus = false;vm.validateInput({type: vm.inputDetails.inputName, str: vm.inputValue})"
+        ng-focus="vm.onFocus = true"
+        maxlength="{{vm.inputDetails.maxlength}}"
+        ng-required="{{!vm.inputDetails.isNotRequired}}"/>
+        <!-- number input -->
+        <input
+        ng-if="vm.inputDetails.validationType === 'idd-validation'"
+        type="text"
+        name="{{vm.inputDetails.inputName}}"
+        title="{{vm.inputDetails.inputName}}"
+        id="{{vm.inputId}}"
+        class="form-control input-summary-style medium-input-style isBlurValidation with-dollar"
+        ng-model="vm.inputValue"
+        idd-validation
+        ng-blur="vm.onFocus = false;vm.validateInput({type: vm.inputDetails.inputName, str: vm.inputValue});vm.formatSalary();"
+        ng-focus="vm.onFocus = true;vm.unFormatSalary();"
+        ng-change="vm.validateLength();"
+        maxlength="{{vm.inputDetails.maxlength}}"
+        ng-required="{{!vm.inputDetails.isNotRequired}}"/>
+    </div>
+</div>

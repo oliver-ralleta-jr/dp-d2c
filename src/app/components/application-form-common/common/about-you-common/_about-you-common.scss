@@ -1,0 +1,96 @@
+.default {
+    .common-details-box .common-box-content .tip p,
+    .common-details-box .common-box-content .bottom-tip p {
+        border-radius: 5px;
+        @extend .opensans-regular;
+        font-size: 0.7rem;
+        padding: 15px;
+        color: #949494;
+        margin-top: 25px;
+        background-color: #fff;
+        border: 1px solid #949494;
+    }
+    .common-details-box .common-box-content .nric-tip p {
+        display: inline-block;
+        margin-top: 0;
+    }
+    .common-details-box .common-box-content .bottom-tip p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .common-details-box .common-box-content .tip .tip-triangle,
+    .common-details-box .common-box-content .bottom-tip .tip-triangle {
+        position: relative;
+    }
+    .common-details-box .common-box-content .tip .tip-triangle span.grey {
+        position: absolute;
+        top: -11px;
+        left: 5%;
+        border-bottom: 12px solid #687379;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+    .common-details-box .common-box-content .tip .tip-triangle span.white {
+        position: absolute;
+        top: -10px;
+        left: 5%;
+        border-bottom: 12px solid #fff;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+    .common-details-box .common-box-content .bottom-tip .tip-triangle span.grey {
+        position: absolute;
+        left: 5%;
+        border-top: 12px solid #687379;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+    .common-details-box .common-box-content .bottom-tip .tip-triangle span.white {
+        position: absolute;
+        top: -1px;
+        left: 5%;
+        border-top: 12px solid #fff;
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+    }
+    .txtForMedisave{
+        background-color:white !important;
+    }
+}
+
+about-you-common .dropdown-box-pru select, about-you-common .dropdown-box-pru select:hover, about-you-common .dropdown-box-pru select:focus {
+  width: 100%;
+}
+
+#PM-about-you,
+#PL-about-you {
+    .tip p,
+    .bottom-tip p {
+        margin-left: 0px;
+        padding-left: 0px;
+        border: none;
+    }
+    .tip .tip-triangle,
+    .bottom-tip .tip-triangle {
+        display: none;
+    }
+} //PD-2007 Mobile View Issues
+@media only screen and (max-width: 991px) {
+    .txtForMobile {
+        padding-right: 0 !important;
+    }
+}
+
+.details-common {
+    .detail-submit-btn {
+        margin: 20px 30px;
+        @media #{$mobile-layout} {
+          margin: 20px 0;
+        }
+    }
+}
+.consent-radio {
+    .radioinline {
+        margin-right: 50px;
+    }
+}

@@ -1,0 +1,15 @@
+.summary-header {
+    .header-waring {
+        font-size: 16px;
+        padding-top: 5px;
+        .header-warning-icon {
+            display: inline-block;
+            position: relative;
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            top: 5px;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAE1SURBVHgB7ZRNTsMwEIVfnAq2OUJ6g1aIvVkihAQ34AbtDZIb9AgcIRKIH7Ehe6h8BDhC11QaY7dGSqgdj7OFT4qsyJ68vJknA38K+bC+kfdvMqVmgjQqCGHXKbdAcA/KZ7UwS2kf46Tm1mWcQ/JJlSB6dQKWDb7EtL2eb2K1PAdEVefjlgLHqDilUQfu7z/gFz5rL0/bofq4A9JNcC/Poy4GBWwsAT0LHtBayrv3K4wVAPp9bi9OMvv0TuTZSjaqQKqA6f3vwYYocUTLJAE32Bp8FrsaroCLZQoFNK18GwcxlS9qhi0pjMET20MHW2owFk9sewL7WIYH601RFxvbx/XSK+CGlNp7jwiqbmwnnY2f2zKIcagRp3Cxre3Lzu7gfTMWYW7b8/nnvkXpsYyj9S3+4fAN6EVsP+Hvrd0AAAAASUVORK5CYII=');
+        }
+    }
+}

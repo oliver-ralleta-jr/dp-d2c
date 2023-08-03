@@ -1,0 +1,58 @@
+.residency-section {
+    p {
+        margin-bottom:15px;
+    }
+}
+.aps-choice {
+    padding-left: 10px;
+
+    .q-radio-group {
+        display: flex;
+        .q-radio {
+            margin-right: 30px;
+            min-width: 80px;
+            .q-radio-label {
+                position: relative;
+                font-size: 18px;
+                font-weight: normal;
+                line-height: 22px;
+                span {
+                    position: relative;
+                    margin-left: 10px;
+                }
+                input[type=radio]{
+                    box-shadow: none;
+                    top: 0px;
+                    margin: 0px;
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        position:absolute;
+                        height: 22px;
+                        width: 22px;
+                        outline: none;
+                        border: 2px solid #D7D7D7;
+                        background-color: #FFFFFF;
+                        border-radius: 50%;
+                        z-index: 2;
+                        left: -3px;
+                        top: -1px;
+                    }
+                    &:checked::after {
+                        content: "";
+                        display: inline-block;
+                        position:absolute;
+                        height: 20px;
+                        width: 20px;
+                        background-color: #68737A;
+                        border-radius: 50%;
+                        border: 4px solid #fff;
+                        z-index: 3;
+                        left: -2px;
+                        top: -0.3px
+                    }
+                }
+            }
+        }
+    }    
+}

@@ -1,0 +1,355 @@
+@import 'assets/stylesheets/fonts';
+@import 'assets/stylesheets/colors';
+@import 'assets/stylesheets/variables';
+@import 'assets/stylesheets/icons';
+@import 'assets/stylesheets/base';
+@import 'app/components/main/main';
+@import 'app/components/landing/landing';
+@import 'app/shared/header/header';
+@import 'app/shared/footer/footer';
+@import 'app/shared/questions-pru/radio-box-pru';
+@import 'app/shared/questions-pru/checkbox-pru';
+@import 'app/shared/questions-pru/multiple-radio-box';
+@import 'app/shared/questions-pru/textfield-box-pru';
+@import 'app/shared/questions-pru/dropdown-box-pru';
+@import 'app/shared/questions-pru/dropdown-box-with-search-pru';
+@import 'app/shared/questions-pru/form-box-pru';
+@import 'app/shared/questions-pru/questions';
+@import 'app/shared/questions-pru/questions-shield/questions-shield';
+@import 'app/shared/questions-pru/title-box-pru';
+@import 'app/shared/modal/consultant-modal/consultant-modal';
+@import 'app/shared/modal/how-collect-data/how-collect-data';
+@import 'app/shared/modal/cancel-modal/cancel-modal';
+@import 'app/shared/modal/cs-cancel-modal/cs-cancel-modal';
+@import 'app/shared/modal/pdf-modal/pdf-modal';
+@import 'app/shared/footnotes/footnotes';
+@import 'app/components/estimation/estimation';
+@import 'app/components/estimation/estimation-Man/estimation-Man';
+@import 'app/components/estimation/estimation-Lady/estimation-Lady';
+@import 'app/components/estimation/estimation-Ps/estimation-Ps';
+@import 'app/components/estimation/estimation-shield/estimation-shield';
+@import 'app/components/estimation/estimation-pfc/estimation-pfc';
+@import 'app/components/estimation/estimation-pat/estimation-pat';
+@import 'app/components/estimation/estimation-PAS/estimation-PAS';
+@import 'app/components/estimation/estimation-per/estimation-per';
+@import 'app/components/estimation/estimation-pc/estimation-pc';
+@import 'app/components/estimation/estimation-Pa/estimation-Pa';
+@import 'app/components/estimation/estimation-Pa/modal/estimation-Pa-rider';
+@import 'app/components/estimation/estimation-ET/estimation-ET';
+@import 'app/components/estimation/estimation-ET/modal/estimation-ET-rider';
+@import 'app/components/estimation/estimation-PT/estimation-PT';
+@import 'app/components/estimation/estimation-PTV/estimation-PTV';
+@import 'app/components/estimation/estimation-PLMF/estimation-PLMF';
+@import 'app/components/estimation/estimation-PGP/estimation-PGP';
+@import 'app/components/estimation/estimation-PGRP/estimation-pgrp';
+@import 'app/components/estimation/estimation-PGRP/modal/estimation-pgrp-popup';
+@import 'app/components/redirect-to-agent/redirect-to-agent';
+@import 'app/components/redirect-to-lead-gen/redirect-to-lead-gen';
+@import 'app/components/lead-gen-thank/lead-gen-thank';
+@import 'app/components/lead-gen-thank-v2/lead-gen-thank-v2';
+@import 'app/components/redirect-to-lead-gen/PLMF/redirect-to-lead-gen-PLMF';
+@import 'app/components/entries/et-scb-entry/et-scb-entry';
+@import 'app/components/entries/entries';
+@import 'app/components/entries/products/products';
+@import 'app/components/health-declaration/health-declaration';
+@import 'app/components/redirect-get-new-assistance/redirect-get-new-assistance';
+@import 'app/components/redirect-get-help/redirect-get-help';
+@import 'app/components/confirmation/confirmation-ptv/confirmation-ptv';
+@import 'app/components/confirmation/confirmation';
+@import 'app/components/payment-error/payment-error';
+@import 'app/components/cancel/cancel';
+@import 'app/components/spinner/spinner';
+@import 'app/components/progressbar/progressbar';
+@import 'app/components/pdfcontainer/pdfcontainer';
+@import 'app/components/login/login';
+@import 'app/components/shield-aps/shield-aps';
+@import 'app/components/otp-request/otp-request';
+@import 'app/components/otp-changeNumber/otp-changeNumber';
+@import 'app/components/one-time-password/one-time-password';
+@import 'app/components/loading-info/loading-info';
+@import 'app/components/error-page/error-page';
+@import 'app/shared/modal/time-out-modal/time-out-modal';
+@import 'app/components/time-out-select-no/time-out-select-no';
+@import 'app/components/time-out/time-out';
+@import 'app/components/authentication/authentication';
+@import 'app/components/upload-progressbar/upload-progressbar';
+@import 'app/components/confirmation/components/payment-way/payment-way';
+@import 'app/components/confirmation/components/policy-details-confirmation/policy-details-confirmation';
+@import 'app/components/cyberpay/cyberpay';
+
+@import "app/components/application-form-common/common/about-you-common/about-you-common";
+@import "app/components/application-form-common/common/more-about-you-common/more-about-you-common";
+@import "app/components/application-form-common/common/policy-details-common/policy-details-common";
+@import "app/components/application-form-common/common/health-common/health-common";
+@import "app/components/application-form-common/common/health-review/health-review";
+@import "app/components/application-form-common/common/your-declarations-common/your-declarations-common";
+@import 'app/components/application-form-common/common/what-you-buying-common/what-you-buying-common';
+@import 'app/components/application-form-common/common/your-consent-common/your-consent-common';
+@import 'app/components/application-form-common/common/payment-option-summary/payment-option-summary';
+@import 'app/components/application-form-common/common/payment-option-review/payment-option-review';
+@import "app/components/application-form-common/pages/details-common/details-common";
+@import "app/components/application-form-common/pages/summary-common/summary-common";
+@import 'app/components/application-form-common/pages/summary-common/modal/your-consent-modal';
+@import "app/components/application-form-common/index";
+
+@import "app/components/application-form-common/common/about-you-review/about-you-review";
+@import "app/components/application-form-common/common/more-about-you-review/more-about-you-review";
+@import "app/components/application-form-common/common/utils/input/input-review";
+@import "app/components/application-form-common/common/utils/phoneInput/phone-input";
+@import "app/components/application-form-common/common/utils/dobInput/dob-input";
+@import "app/components/application-form-common/common/utils/genderSelect/gender-select";
+
+@import 'app/components/application-form-common/common/upload-your-document-review/upload-your-document-review';
+@import 'app/components/application-form-common/common/upload-your-document-common/upload-your-document-common';
+@import 'app/components/application-form-common/common/utils/radio/radio-edit-review';
+@import 'app/components/application-form-common/common/utils/address/address-edit-review';
+@import 'app/components/application-form-common/common/utils/select/select-edit-review';
+
+@import 'app/components/eligible-product/eligible-product';
+@import 'app/components/needs-analysis/needs-analysis';
+@import 'app/components/discount-banner/discount-banner';
+@import 'app/components/plan-panel/plan-panel';
+
+@import 'app/components/unavailable-pgp/unavailable-pgp';
+
+@import 'app/template/template';
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+body,
+h1,
+h2,
+h3 {
+    font-weight: 300
+}
+
+a {
+    color: #428bca;
+    text-decoration: none;
+    &:hover {
+        color: #5aadbb;
+    }
+}
+
+ul,li{
+    list-style: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+select:-moz-focusring {
+    color: transparent !important;
+    text-shadow: 0 0 0 #000 !important;
+    border:0;
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border:0;
+    outline: none;
+}
+
+/* Sub Header*/
+
+.sub-header {
+    @extend .common-background-red;
+    @extend .common-color-white;
+    width: 100%;
+    padding: 0.5rem 0;
+}
+
+/* Sub Header Title*/
+
+.header-title-large {
+    @extend .font-size-56;
+    @extend .prusans-demi;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.2rem;
+    }
+    padding: 0px;
+}
+
+.header-title-normal {
+    @extend .prusans-book;
+    @extend .font-size-56;
+    padding-right: 1rem;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.2rem;
+        padding-left: 0.75rem;
+    }
+    b{
+        @extend .prusans-demi;
+    }
+}
+
+.header-title-normal-mobile {
+    @extend .prusans-book;
+    @extend .font-size-48;
+    @media only screen and (max-width: 768px) {
+        padding-left: 0.75rem;
+    }
+    b{
+        @extend .prusans-demi;
+    }
+}
+.container.header-title-normal-mobile{
+    @media only screen and (max-width: 768px) {
+        padding-left: 1.5rem;
+    }
+}
+/* Sub Header Question*/
+
+.header-title-question {
+    @extend .prusans-book;
+    @extend .font-size-36;
+    @media only screen and (max-width: 768px) {
+        font-size: 0.7rem;
+        padding-left: 0.75rem;
+    }
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 14px;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.modal-backdrop.in {
+    opacity: .7 !important;
+}
+
+.form-control {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #a8a8a8;
+    padding: 4px 12px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+input,
+textarea,
+button,
+select,
+a,
+button:focus,
+a:focus, a:active,
+button::-moz-focus-inner,
+select::-moz-focus-inner,
+select:focus {
+    outline: none;
+}
+
+input:focus {
+    border-color: $color-select-hover;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 184, 29, 0.6);
+}
+
+.has-error .form-control {
+    border-color: #ed1b2e;
+}
+
+.has-error .help-block {
+    color: #ed1b2e;
+}
+
+@keyframes bottomRadius5 {
+    from {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    to {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@-moz-keyframes bottomRadius5
+/* Firefox */
+
+{
+    from {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    to {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@-webkit-keyframes bottomRadius5
+/* Safari and Chrome */
+
+{
+    from {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    to {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@-o-keyframes bottomRadius5
+/* Opera */
+
+{
+    from {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    to {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+.container {
+  @media (min-width: 1550px) {
+    width: 1480px;
+  }
+}
+
+.collapse-icon.glyphicon.glyphicon-chevron-up, .collapse-icon.glyphicon.glyphicon-chevron-down {
+    color: #ED1B2E;
+    font-size: 16px;
+}
+
+@import 'app/template/theme/v2ux';
+@import 'app/template/theme/pulse';

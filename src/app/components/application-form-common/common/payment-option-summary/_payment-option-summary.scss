@@ -1,0 +1,75 @@
+.common-main-content #payment-option-summary {
+  .radio-inline {
+    padding-left: 15px;
+  }
+  .per-payment-desc {
+    padding-left: 20px;
+  }
+  .grey-text {
+    margin-left:20px;
+	}
+}
+#payment-option-summary {
+  overflow: hidden;
+  font-family: "FSAlbertPro-Regular" !important;
+  .radio-inline {
+    display: flex;
+    width: 100%;
+    padding: 15px 15px 15px 0;
+  }
+  .tip-img {
+    width: auto;
+    height: 14px;
+    vertical-align: top;
+  }
+  .payment-desc {
+    @extend .prusans-book;
+    @extend .common-color-blue;
+    @extend .font-size-30;
+    padding-left: 30px;
+    margin-top: 10px;
+    a {
+      cursor: pointer;
+      text-decoration: underline;
+      @extend .common-color-red;
+    }
+  }
+  .per-payment-desc {
+    font-size: 15px;
+    margin-top: 10px;
+    a {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #46C3E3 !important;
+    }
+  }
+  .grey-text {
+    color: $color-label-grey;
+	}
+  .pay-content {
+    @extend .prusans-book;
+    @extend .common-color-darkgray;
+    text-align: center;
+    font-size: 1rem;
+    div {
+      img {
+        margin-top: 5px;
+        margin-bottom: 25px;
+      }
+    }
+    span {
+      a {
+        @extend .common-color-darkgray;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+    .desc {
+      padding: 0 30px;
+      padding-top: 20px;
+      @extend .prusans-book;
+      @extend .font-size-30;
+      @extend .common-color-darkgray;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.consent-box {
+    .common-sub-box .consent-checkbox label {
+        @extend .prusans-book;
+        @extend .font-size-30;
+        @extend .common-color-darkgray;
+        font-weight: inherit;
+        span {
+          display: block;
+          margin: 10px 0;
+        }
+    }
+}

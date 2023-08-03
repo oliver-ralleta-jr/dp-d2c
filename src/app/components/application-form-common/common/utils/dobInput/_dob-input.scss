@@ -1,0 +1,22 @@
+.default {
+    .btn-hover {
+        position: absolute;
+        right: 5px;
+        font-size: 0.7rem !important;
+        font-weight: normal !important;
+        color: #636363;
+    }
+    @media only screen and (max-width:500px) {
+        .btn-hover {
+            position: absolute;
+            right: 5px;
+        }
+    }
+    .edit-dashed {
+        border-bottom: dashed;
+        border-color: #949494;
+    }
+    .dob-label .empty {
+        display: none;
+    }
+}

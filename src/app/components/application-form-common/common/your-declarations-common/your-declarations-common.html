@@ -1,0 +1,60 @@
+<!--both mobile and desktop-->
+<section id="your-declarations">
+    <div class="common-box-header">
+        <div>
+            <h1>Terms and Conditions</h1>
+            <a href="javascript:;" ng-click="vm.closeDialog(0)"><img ng-src="assets/images/cross.png"></a>
+        </div>
+    </div>
+    <div class="common-box-content">
+        <div class="declaration-box">
+            <div class="declaration-herder">
+                <p>Please read the terms and conditions carefully before you complete your application for insurance coverage with Prudential Assurance Company Singapore (Private) Limited ("Prudential"). The terms "application", "application form", "proposal"
+                    and "proposal form" are used interchangeably and refer to the form completed by you when applying for insurance.</p>
+            </div>
+            <div class="declaration-body" ng-bind-html="vm.declaration"></div>
+        </div>
+        <!--desktop only-->
+        <div class="consent-box">
+            <div>
+                <h3>Declaration</h3>
+                <p>By clicking the "Accept" button below:</p>
+                <p ng-repeat="disclaimer in vm.disclaimer">&#x2022; {{disclaimer}}</p>
+            </div>
+            <div>
+                <p class="tips">Your insurance coverage will not commence until the application has been received and officially accepted by Prudential, premiums have been paid and an official letter indicating commencement of cover has been issued</p>
+            </div>
+            <div>
+                <button class="button-accept-desktop" ng-click="vm.closeDialog(1)">ACCEPT</button>
+            </div>
+        </div>
+        <div class="mask-box"></div>
+        <div class="scroll-msg-box">
+            <a href="javascript:;" class="desktop-scroll-msg">Scroll to read on</a>
+            <a href="javascript:;" id="mobile-scroll-msg" class="mobile-scroll-msg" ng-click="vm.setStatus(0)">{{vm.scrollMsg}}</a>
+        </div>
+    </div>
+</section>
+
+<!--mobile only-->
+<section id="continue-footer" ng-if="vm.status == 0">
+    <div class="continue-box">
+        <button class="button-continue-mobile" ng-click="vm.setStatus(1)">CONTINUE</button>
+    </div>
+</section>
+
+<!--mobile only-->
+<section id="consent-footer" ng-if="vm.status == 1">
+    <div class="consent-box-mobile">
+        <div>
+            <p>By clicking the "Accept" button below:</p>
+            <p ng-repeat="disclaimer in vm.disclaimer">&#x2022; {{disclaimer}}</p>
+        </div>
+        <div>
+            <p class="tips">Your insurance coverage will not commence until the application has been received and officially accepted by Prudential, premiums have been paid and an official letter indicating commencement of cover has been issued</p>
+        </div>
+        <div>
+            <button class="button-accept-mobile" ng-click="vm.closeDialog(1)">ACCEPT</button>
+        </div>
+    </div>
+</section>

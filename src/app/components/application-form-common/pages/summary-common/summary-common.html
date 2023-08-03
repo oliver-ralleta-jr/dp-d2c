@@ -1,0 +1,155 @@
+<div ng-class="{'default': true}" id="{{vm.profile.type}}-summary">
+    <div ng-hide="vm.showIframe">
+        <div class="summary-header">
+            <div class="header-title">
+                <div class="container visible-lg header-title-normal" ng-bind-html="vm.pageTitle"></div>
+                <div class="container hidden-lg header-title-normal-mobile" ng-bind-html="vm.pageTitle"></div>
+            </div>
+            <div class="error-desc container" ng-show="vm.showError">
+                <b>ERROR: </b>Some of the information provided is incomplete or invalid. Please review the fields in red and re-submit your form.</div>
+            <div class="header-waring" ng-show="!vm.closeNote">
+                <div class="container">
+                    <div>
+                        <span class="header-warning-icon"></span> {{vm.warning}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="summary-navbar" ng-show="vm.reqType == 'PL' || vm.reqType == 'PM'">
+            <div class="container application-summary-container">
+                <div class="row">
+                    <div ng-if="vm.reqType != 'PGP' && vm.reqType != 'PGRP' && vm.reqType != 'PS' && !vm.isSinglePremium">
+                        <div class="col-xs-3 col-sm-3 col-md-2 navbar-item complete">
+                            <span class="item">
+                                <span class="num">1</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">DETAILS</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-2 navbar-item active">
+                            <span class="item">
+                                <span class="num">2</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">REVIEW</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-2 navbar-item">
+                            <span class="item">
+                                <span class="num">3</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">PAYMENT</span>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 navbar-item">
+                            <span class="item">
+                                <span class="num">4</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">CONFIRMATION</span>
+                        </div>
+                    </div>
+                    <!--PD-2164: Payment step should not show for PGP and PGRP-->
+                    <div ng-if="vm.reqType == 'PGP' || vm.reqType == 'PGRP' || vm.reqType == 'PS' || vm.isSinglePremium">
+                        <div class="col-xs-4 col-sm-4 col-md-3 navbar-item complete">
+                            <span class="item">
+                                <span class="num">1</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">DETAILS</span>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3 navbar-item active">
+                            <span class="item">
+                                <span class="num">2</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">REVIEW</span>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-3 navbar-item">
+                            <span class="item">
+                                <span class="num">3</span>
+                                <span class="circle"></span>
+                            </span>
+                            <span class="name">CONFIRMATION</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="summary-content-box">
+            <div class="container application-summary-container" style="position: relative;">
+                <div class="row">
+                    <div class="col-md-12 content-title-box">
+                        <h1 ng-show="vm.summaryStep =='EDIT'">Here is your pre-filled application, {{vm.firstName}}.</h1>
+                        <h3 ng-show="vm.summaryStep =='EDIT'">Please ensure all the information is correct before continuing</h3>
+                        <h1 ng-show="vm.summaryStep !=='EDIT'">Please review your application and the terms and conditions</h1>
+                        <h3 ng-show="vm.summaryStep !=='EDIT'">You can edit your answers by clicking on the pencil icon</h3>
+                        <div class="content-view-message" ng-show="vm.summaryStep !=='EDIT' && vm.showSaveMessage">Your changes have been saved. Please review your Benefit Illustration, Product Summary and Policy Contract, including any coverage exclusion, as the values, financial information and benefits may have varied from the initial quotation
+                            provided to you.</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-md-push-8">
+                        <policy-details-common profile="vm.profile" summary-step="vm.summaryStep"></policy-details-common>
+                    </div>
+                    <div class="col-md-8 col-md-pull-4" id="applicationSummaryLeftContents">
+                        <div class="common-details-box common-review-box" ng-class="{'common-application-box':vm.isCollapsed}">
+                            <div class="common-box-header" ng-class="{'isCollapse':vm.isCollapsed}">
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <h1>Your application</h1>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <a ng-class="{'isCollapse':vm.isCollapsed}" href="#" ng-click="vm.isCollapsed = !vm.isCollapsed">
+                                          <span class="glyphicon collapse-icon" ng-class="{'glyphicon-chevron-up': !vm.isCollapsed, 'glyphicon-chevron-down': vm.isCollapsed}"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div uib-collapse="vm.isCollapsed">
+                                <div class="bg-content">
+                                    <div class="each-section">
+                                        <about-you-review profile="vm.profile" summary-step="vm.summaryStep" validation-result="vm.validationResult" on-update="vm.updateValidResult($event);" on-idd-change="vm.onChange($event)" dob="vm.profile.dob"></about-you-review>
+                                    </div>
+                                    <div class="each-section" ng-show="vm.summaryStep =='REVIEW'">
+                                        <more-about-you-review profile="vm.profile" hide-upload="vm.hideUpload" summary-step="vm.summaryStep" validation-result="vm.validationResult" on-update="vm.updateValidResult($event);" on-idd-change="vm.onChange($event)"></more-about-you-review>
+                                    </div>
+                                    <div class="each-section" ng-if="vm.reqType != 'PA' && vm.reqType != 'PGP' && vm.reqType != 'PGRP' && vm.reqType != 'PAS' && vm.reqType != 'PER'">
+                                        <health-review profile="vm.profile" summary-step="vm.summaryStep" validation-result="vm.validationResult" on-update="vm.updateValidResult($event);" on-idd-change="vm.onChange($event)"></health-review>
+                                    </div>
+                                    <div class="each-section" ng-if="(vm.reqType == 'PGP' || vm.reqType == 'PGRP' || vm.reqType == 'PAS') && vm.hasPaymentQ">
+                                        <payment-option-common profile="vm.profile" summary-step="vm.summaryStep"></payment-option-common>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="common-details-box common-review-box" ng-if="vm.isPERdirectEntry">
+                          <payment-option-review profile="vm.profile" summary-step="vm.summaryStep" ></payment-option-review>
+                        </div>
+                        <div class="common-details-box common-review-box" ng-show="vm.showUpload && !vm.hideDocUpload">
+                            <upload-your-document-review profile="vm.profile" summary-step="vm.summaryStep" validation-result="vm.validationResult" on-update="vm.updateValidResult($event);" on-idd-change="vm.onChange($event)"></upload-your-document-review>
+                        </div>
+                        <div class="common-details-box common-review-box" ng-if="!vm.editField && vm.summaryStep !=='EDIT'">
+                            <what-you-buying-common profile="vm.profile"></what-you-buying-common>
+                        </div>
+                        <!-- PACSDP-664: PAS payment options -->
+                        <div class="common-details-box common-review-box" ng-if="vm.reqType == 'PAS' && !vm.hidePaymentOption">
+                            <payment-option-summary profile="vm.profile" summary-step="vm.summaryStep" show-collapse="true"></payment-option-summary>
+                        </div>
+                        <div class="common-details-box common-review-box" ng-show="!vm.editField && vm.reqType === 'PS' || !vm.editField && vm.reqType === 'PC'">
+                            <your-consent-common profile="vm.profile" summary-step="vm.summaryStep" show-collapse="true" medical-report="true"></your-consent-common>
+                        </div>
+                        <div class="common-details-box common-review-box" ng-show="!vm.editField">
+                          <your-consent-common profile="vm.profile" summary-step="vm.summaryStep" show-collapse="true"></your-consent-common>
+                        </div>
+                        <div class="btn-box text-right">
+                            <button ng-show="vm.summaryStep !=='EDIT' && !vm.editField" id="makePayment" name="makePayment" title="makePayment" class="btn detail-submit-btn" ng-click="vm.triggerDeclaration()">NEXT</button>
+                            <button ng-show="vm.summaryStep !=='EDIT' && vm.editField" id="makePayment" name="makePayment" title="makePayment" class="btn detail-submit-btn" ng-click="vm.proxyOnClick()" ng-disabled="$root.nextDisable">SAVE CHANGES</button>
+                        </div>
+                        <foot-notes ng-if="vm.reqType == 'PER' || vm.reqType == 'PAS'" header="'Footnotes'" message="vm.footNote" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe id="summaryCommonPayment" ng-if="vm.showIframe" src="{{vm.payUrl}}" ng-style="vm.getIframeStyle()"></iframe>
+</div>
