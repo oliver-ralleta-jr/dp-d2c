@@ -1,9 +1,12 @@
-/**
- * TODO:
- * importing App component and render
- * HMR setup
- *  1. module.hot
- *  2. HotContainer
- */
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-// import { AppContainer as HotContainer } from 'react-hot-loader';
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

@@ -1,25 +1,20 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "sourceMap": true,
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "preserveConstEnums": true,
-    "module": "commonjs",
-    "target": "es3",
-    "lib": ["es6", "dom"],
-    "jsx": "react",
-    "allowJs": true, // include js files
-    "importHelpers": true, // importing helper functions from tslib
-    "noEmitHelpers": true, // disable emitting inline helper functions
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": [
-      "./src/**/*"
-  ]
+  "include": ["src"]
 }
